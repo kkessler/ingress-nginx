@@ -187,18 +187,6 @@ Error loading new template: %v
 	}
 
 	filesToWatch := []string{}
-	err = filepath.Walk("/etc/nginx/geoip/", func(path string, info os.FileInfo, err error) error {
-		if err != nil {
-			return err
-		}
-
-		if info.IsDir() {
-			return nil
-		}
-
-		filesToWatch = append(filesToWatch, path)
-		return nil
-	})
 
 	if err != nil {
 		klog.Fatalf("Error creating file watchers: %v", err)
